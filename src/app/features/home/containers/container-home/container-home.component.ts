@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { loadTest } from '../../actions/home.actions';
-import { selectTeste } from '../../reducers/home.reducer';
+import { loadTest } from '../../../../store/actions/portal.actions';
+import { selectTeste } from '../../../../store/reducers/portal.reducer';
 
 @Component({
   selector: 'app-container-home',

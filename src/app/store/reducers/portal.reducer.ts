@@ -1,8 +1,8 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as HomeActions from "../actions/home.actions";
+import * as HomeActions from "../actions/portal.actions";
 
-export const homeFeatureKey = 'home';
+export const portalFeatureKey = 'portal';
 
 export interface State extends EntityState<any> {
 
@@ -37,7 +37,7 @@ export const reducer = createReducer(
 )
 
 export const selectFeature = createFeatureSelector<State> (
-    homeFeatureKey
+    portalFeatureKey
 );
 
 export const selectTeste = createSelector(

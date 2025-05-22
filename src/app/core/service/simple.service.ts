@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
 export class SimpleService {
 
     protected http: HttpClient;
-    private baseUrl = `${environment.REST_URL}/`;
+    private baseUrl = "http://localhost:8080/";
 
     protected options: {
         headers: HttpHeaders;

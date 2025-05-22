@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { HomeService } from "../home.service";
+import { Service } from "../portal.service";
 import { mergeMap } from "rxjs/operators";
-import { loadTest, loadTestSuccess } from "../actions/home.actions";
+import { loadTest, loadTestSuccess } from "../actions/portal.actions";
 
 @Injectable()
-export class HomeEffects {
+export class PortalEffects {
 
     constructor(
         private actions$: Actions,
-        private service: HomeService
+        private service: Service
     ) {}
 
     teste$ = createEffect(() =>

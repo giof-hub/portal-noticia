@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
-import { SimpleService } from "../../core/service/simple.service";
+import { SimpleService } from "../core/service/simple.service";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { APIS } from "../../core/apis.provider";
+import { APIS } from "../core/apis.provider";
 import { Result } from "../models/resul.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class HomeService extends SimpleService {
+export class Service extends SimpleService {
     
     constructor (http: HttpClient) {
         super(http);
