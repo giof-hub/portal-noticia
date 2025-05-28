@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { loadCategories, loadTest } from '../../../store/actions/portal.actions';
-import { selectCategories } from '../../../store/reducers/portal.reducer';
-import { Observable } from 'rxjs';
-import { Category } from '../../../models/category.model';
+
 
 @Component({
   selector: 'container-app-news',
@@ -12,16 +8,8 @@ import { Category } from '../../../models/category.model';
 })
 export class ContainerNewsComponent implements OnInit{
 
-  private $categories: Observable<Category[]>;
-
-  constructor (
-    private store: Store
-  ) {}
+  constructor () {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadCategories());
-
-
-    this.$categories = this.store.pipe(select(selectCategories));
   }
 }

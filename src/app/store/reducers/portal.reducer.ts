@@ -1,12 +1,14 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as HomeActions from "../actions/portal.actions";
+import * as Actions from "../actions/portal.actions";
+import { Result } from "../../models/result.model";
+import { Category } from "../../models/category.model";
 
 export const portalFeatureKey = 'portal';
 
 export interface State extends EntityState<any> {
 
-    teste: any
+    categories: Category[]
 
 }
 
@@ -14,21 +16,21 @@ export const adapter: EntityAdapter<any> = createEntityAdapter<any>();
 
 export const initialState: State = adapter.getInitialState({
 
-    teste: null
+    categories: [] 
 
 });
 
 export const reducer = createReducer(
     initialState,
     on(
-        HomeActions.loadTestSuccess,
+        Actions.loadCategoriesSuccess,
         (state, { result }) =>  ({
             ...state,
-            result: result.result
+            categories: result.result
         })
     ),
     on(
-        HomeActions.clearLoadTeste,
+        Actions.clearLoadCategories,
         (state) =>  ({
             ...state,
             result: null
@@ -40,7 +42,7 @@ export const selectFeature = createFeatureSelector<State> (
     portalFeatureKey
 );
 
-export const selectTeste = createSelector(
+export const selectCategories = createSelector(
   selectFeature,
-  (i: State) => i.teste  
+  (i: State) => i.categories  
 );

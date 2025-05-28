@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { Result } from "../../models/resul.model";
+import { Result } from "../../models/result.model";
+import { Category } from "../../models/category.model";
 
 export const loadTest = createAction(
     '[Home/API] Load teste',
@@ -13,4 +14,17 @@ export const loadTestSuccess = createAction(
 
 export const clearLoadTeste = createAction(
     '[Home/API] Clear Load teste'
+);
+
+export const loadCategories = createAction(
+    '[Category/API] Load categories'
+);
+
+export const loadCategoriesSuccess = createAction(
+    '[Category/API] Load categories success',
+    props<{ result: Result<Category[]> }>()
+);
+
+export const clearLoadCategories = createAction(
+    '[Category/API] Clear Load categories'
 );

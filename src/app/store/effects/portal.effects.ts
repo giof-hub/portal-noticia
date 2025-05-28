@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Service } from "../portal.service";
 import { mergeMap } from "rxjs/operators";
-import { loadTest, loadTestSuccess } from "../actions/portal.actions";
+import { loadCategories, loadCategoriesSuccess, loadTest, loadTestSuccess } from "../actions/portal.actions";
 
 @Injectable()
 export class PortalEffects {
@@ -19,6 +19,19 @@ export class PortalEffects {
                 this.service.teste().pipe(
                     mergeMap((result) => [
                         loadTestSuccess({ result })
+                    ])
+                )
+            )
+        )
+    );
+
+    categories$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadCategories),
+            mergeMap((action) => 
+                this.service.categories().pipe(
+                    mergeMap((result) => [
+                        loadCategoriesSuccess({ result })
                     ])
                 )
             )

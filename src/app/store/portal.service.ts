@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { SimpleService } from "../core/service/simple.service";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { APIS } from "../core/apis.provider";
-import { Result } from "../models/resul.model";
+import { Result } from "../models/result.model";
+import { Category } from "../models/category.model";
 
 @Injectable({
     providedIn: 'root'
@@ -16,5 +17,26 @@ export class Service extends SimpleService {
 
     teste (): Observable<Result<any>> {
         return this.get(`${APIS.getUrl()}/teste`);
+    }
+
+    categories(): Observable<Result<Category[]>> {
+
+        let categories: Category[] = [
+            {
+                id: 1,
+                descricao: 'Geral'
+            }, 
+            {
+                id: 2,
+                descricao: 'Esportes'
+            }
+        ]
+
+        let result: Result<Category[]> = {
+            result: categories
+        }
+
+        return of(result);
+        // return this.get(`${APIS.getUrl()}/category`);
     }
 }
