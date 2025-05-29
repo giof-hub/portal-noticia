@@ -22,14 +22,9 @@ export class Service extends SimpleService {
     categories(): Observable<Result<Category[]>> {
 
         let categories: Category[] = [
-            {
-                id: 1,
-                descricao: 'Geral'
-            }, 
-            {
-                id: 2,
-                descricao: 'Esportes'
-            }
+            { id: 1, descricao: 'Geral' }, 
+            { id: 2, descricao: 'Esportes' },
+            { id: 3, descricao: 'Empregos' }
         ]
 
         let result: Result<Category[]> = {

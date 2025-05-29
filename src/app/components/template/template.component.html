@@ -1,6 +1,12 @@
 <mat-toolbar>
     <mat-toolbar-row>
-        <button mat-button *ngFor="let category of $categories | async">{{ category.descricao }}</button>
+        <span class="template-navbar-spacer"></span>
+        <button mat-button class="category-btn" *ngFor="let category of $categories | async">{{ category.descricao }}</button>
+        <span class="template-navbar-spacer"></span>
+        <a mat-button="outlined" class="login-button" routerLink="/login">
+            <mat-icon>lock</mat-icon>
+            LogIn
+        </a>
     </mat-toolbar-row>
 </mat-toolbar>
   
