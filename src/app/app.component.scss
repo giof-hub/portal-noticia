@@ -1,0 +1,21 @@
+$directions: (r: 'right', l: 'left', t: 'top', b: 'bottom');
+$spacings: (0: 4, 1: 8, 2: 16, 3: 24, 4: 32, 5: 40, 6: 48, 7: 56, 8: 64);
+
+
+@each $spacing, $spa in $spacings {
+    @each $direction, $dir in $directions {
+        .m#{$direction}-#{$spacing} {
+            margin-#{$dir}: #{$spa}px !important
+        }
+    }
+
+    .mx-#{$spacing} {
+        margin-top: #{$spa}px !important;
+        margin-bottom: #{$spa}px !important;
+    }
+
+    .my-#{$spacing} {
+        margin-right: #{$spa}px !important;
+        margin-left: #{$spa}px !important;
+    }
+}

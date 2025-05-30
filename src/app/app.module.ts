@@ -21,9 +21,10 @@ import { ContainerNewsComponent } from './features/news/containers/container-new
 import { NewsComponent } from './features/news/components/news.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { AuthComponent } from './features/auth/auth.component';
+import { AuthComponent } from './features/auth/component/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ContainerAuthComponent } from './features/auth/container/container-auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     TemplateComponent,
     ContainerNewsComponent,
     NewsComponent,
-    AuthComponent
+    AuthComponent,
+    ContainerAuthComponent
   ],
   imports: [
     BrowserAnimationsModule,

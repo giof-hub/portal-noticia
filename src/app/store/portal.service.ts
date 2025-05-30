@@ -34,4 +34,14 @@ export class Service extends SimpleService {
         return of(result);
         // return this.get(`${APIS.getUrl()}/category`);
     }
+
+    login(email: string, senha: string): Observable<Result<string>> {
+
+        let data = {
+            email: email,
+            senha: senha
+        };
+
+        return this.post(data, `${APIS.getUrl()}/login`);
+    }
 }

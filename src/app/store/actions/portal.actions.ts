@@ -28,3 +28,13 @@ export const loadCategoriesSuccess = createAction(
 export const clearLoadCategories = createAction(
     '[Category/API] Clear Load categories'
 );
+
+export const loadLogin = createAction(
+    '[Login/API] Load login',
+    props<{email: string, senha: string}>()
+);
+
+export const loadLoginSuccess = createAction(
+    '[Login/API] Load login success',
+    props<{ result: Result<string> }>()
+);
