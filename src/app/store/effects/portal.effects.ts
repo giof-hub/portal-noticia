@@ -42,7 +42,7 @@ export class PortalEffects {
         this.actions$.pipe(
             ofType(loadLogin),
             mergeMap((action) => 
-                this.service.login(action.email, action.senha).pipe(
+                this.service.login(action.data).pipe(
                     mergeMap((result) => [
                         loadLoginSuccess({ result })
                     ])

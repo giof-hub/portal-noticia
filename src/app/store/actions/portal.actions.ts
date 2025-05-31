@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Result } from "../../models/result.model";
 import { Category } from "../../models/category.model";
+import { Login } from "../../models/login.model";
 
 export const loadTest = createAction(
     '[Home/API] Load teste',
@@ -31,7 +32,7 @@ export const clearLoadCategories = createAction(
 
 export const loadLogin = createAction(
     '[Login/API] Load login',
-    props<{email: string, senha: string}>()
+    props<{data: Login}>()
 );
 
 export const loadLoginSuccess = createAction(
