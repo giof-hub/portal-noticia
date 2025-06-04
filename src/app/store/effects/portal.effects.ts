@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Service } from "../portal.service";
 import { mergeMap } from "rxjs/operators";
 import { loadCategories, loadCategoriesSuccess, loadLogin, loadLoginSuccess, loadTest, loadTestSuccess } from "../actions/portal.actions";
+import { stopLoad } from "../actions/core.actions";
 
 @Injectable()
 export class PortalEffects {
@@ -44,6 +45,7 @@ export class PortalEffects {
             mergeMap((action) => 
                 this.service.login(action.data).pipe(
                     mergeMap((result) => [
+                        stopLoad(),
                         loadLoginSuccess({ result })
                     ])
                 )

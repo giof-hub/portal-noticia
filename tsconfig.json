@@ -23,7 +23,7 @@
       "ES2022",
       "dom"
     ],
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": false,

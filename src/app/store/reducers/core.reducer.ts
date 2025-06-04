@@ -1,14 +1,12 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as Actions from "../actions/portal.actions";
-import { Result } from "../../models/result.model";
-import { Category } from "../../models/category.model";
+import * as CoreActions from "../actions/core.actions";
 
-export const portalFeatureKey = 'portal';
+export const coreFeatureKey = 'core';
 
 export interface State extends EntityState<any> {
 
-    categories: Category[]
+    loading: boolean
 
 }
 
@@ -16,33 +14,33 @@ export const adapter: EntityAdapter<any> = createEntityAdapter<any>();
 
 export const initialState: State = adapter.getInitialState({
 
-    categories: [] 
+    loading: false
 
 });
 
 export const reducer = createReducer(
     initialState,
     on(
-        Actions.loadCategoriesSuccess,
-        (state, { result }) =>  ({
+        CoreActions.startLoad,
+        (state) =>  ({
             ...state,
-            categories: result.result
+            loading: true
         })
     ),
     on(
-        Actions.clearLoadCategories,
+        CoreActions.stopLoad,
         (state) =>  ({
             ...state,
-            categories: []
+            loading: false
         })
     )
 )
 
 export const selectFeature = createFeatureSelector<State> (
-    portalFeatureKey
+    coreFeatureKey
 );
 
-export const selectCategories = createSelector(
+export const selectLoading = createSelector(
   selectFeature,
-  (i: State) => i.categories  
+  (i: State) => i.loading  
 );
