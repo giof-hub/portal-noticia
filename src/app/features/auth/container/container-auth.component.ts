@@ -5,6 +5,7 @@ import { Login } from '../../../models/login.model';
 import { selectLoginToken } from '../../../store/reducers/portal.reducer';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { startLoad } from '../../../store/actions/core.actions';
 
 @Component({
   selector: 'app-container-auth',
@@ -35,6 +36,7 @@ export class ContainerAuthComponent implements OnInit{
   }
 
   login(data: Login) {
+    this.store.dispatch(startLoad());
     this.store.dispatch(loadLogin({data}));
   }
 }

@@ -11,15 +11,13 @@ export class AuthComponent {
 
   @Output() loginEvent = new EventEmitter();
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
   form: FormGroup;
 
   hide = signal(true);
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
+      login: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -34,7 +32,7 @@ export class AuthComponent {
     if (this.form.valid) {
 
       let data: Login = {
-        login: this.form.get('email').value,
+        login: this.form.get('login').value,
         password: this.form.get('password').value,
       }
 

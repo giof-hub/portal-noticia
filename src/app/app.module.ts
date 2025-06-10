@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 import { StoreModule } from '@ngrx/store';
 import * as fromPortal from './store/reducers/portal.reducer';
 import * as fromCore from './store/reducers/core.reducer';
@@ -56,8 +57,9 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
     MatGridListModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
+    MatMenuModule,
     NgxLoadingModule.forRoot({}),
     StoreModule.forRoot({}),
     EffectsModule.forRoot({}),
