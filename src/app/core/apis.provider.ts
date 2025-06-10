@@ -3,6 +3,6 @@ export class APIS {
     static VERSAO = 'v1';
 
     static getUrl(): string {
-        return `${this.PORTALNOTICIA}/${this.VERSAO}`;
+        return `${this.VERSAO}`;
     }
 }

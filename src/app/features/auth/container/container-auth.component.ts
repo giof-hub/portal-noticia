@@ -1,19 +1,38 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { loadLogin } from '../../../store/actions/portal.actions';
 import { Login } from '../../../models/login.model';
+import { selectLoginToken } from '../../../store/reducers/portal.reducer';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-container-auth',
   templateUrl: './container-auth.component.html',
   styleUrl: './container-auth.component.scss'
 })
-export class ContainerAuthComponent {
+export class ContainerAuthComponent implements OnInit{
 
+  private token$: Observable<string>;
 
   constructor(
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {
+    
+    this.token$ = this.store.pipe(select(selectLoginToken));
+
+    this.token$.subscribe((token) => {
+      if (token) {
+        localStorage.setItem('token', token);
+
+        this.router.navigate(['/news']);
+      }
+    });
+
+  }
 
   login(data: Login) {
     this.store.dispatch(loadLogin({data}));

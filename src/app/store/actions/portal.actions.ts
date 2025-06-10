@@ -37,5 +37,5 @@ export const loadLogin = createAction(
 
 export const loadLoginSuccess = createAction(
     '[Login/API] Load login success',
-    props<{ result: Result<string> }>()
+    props<{ token: Result<string> }>()
 );

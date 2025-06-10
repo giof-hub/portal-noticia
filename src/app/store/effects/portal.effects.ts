@@ -44,9 +44,9 @@ export class PortalEffects {
             ofType(loadLogin),
             mergeMap((action) => 
                 this.service.login(action.data).pipe(
-                    mergeMap((result) => [
+                    mergeMap((token) => [
                         stopLoad(),
-                        loadLoginSuccess({ result })
+                        loadLoginSuccess({ token })
                     ])
                 )
             )

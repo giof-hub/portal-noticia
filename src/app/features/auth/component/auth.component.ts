@@ -34,11 +34,11 @@ export class AuthComponent {
     if (this.form.valid) {
 
       let data: Login = {
-        email: this.form.get('email').value,
+        login: this.form.get('email').value,
         password: this.form.get('password').value,
       }
 
-      this.loginEvent.emit({data});
+      this.loginEvent.emit(data);
     }
 
   }

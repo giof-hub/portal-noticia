@@ -8,7 +8,8 @@ export const portalFeatureKey = 'portal';
 
 export interface State extends EntityState<any> {
 
-    categories: Category[]
+    categories: Category[],
+    token: string
 
 }
 
@@ -16,7 +17,8 @@ export const adapter: EntityAdapter<any> = createEntityAdapter<any>();
 
 export const initialState: State = adapter.getInitialState({
 
-    categories: [] 
+    categories: [],
+    token: null
 
 });
 
@@ -35,7 +37,14 @@ export const reducer = createReducer(
             ...state,
             categories: []
         })
-    )
+    ),
+    on(
+        Actions.loadLoginSuccess,
+        (state, { token }) =>  ({
+            ...state,
+            token: token.result
+        })
+    ),
 )
 
 export const selectFeature = createFeatureSelector<State> (
@@ -45,4 +54,9 @@ export const selectFeature = createFeatureSelector<State> (
 export const selectCategories = createSelector(
   selectFeature,
   (i: State) => i.categories  
+);
+
+export const selectLoginToken = createSelector(
+  selectFeature,
+  (i: State) => i.token  
 );

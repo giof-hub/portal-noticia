@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../../models/category.model';
 import { select, Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { selectCategories } from '../../store/reducers/portal.reducer';
   templateUrl: './template.component.html',
   styleUrl: './template.component.scss'
 })
-export class TemplateComponent {
+export class TemplateComponent implements OnInit {
   $categories: Observable<Category[]>;
 
   constructor (
