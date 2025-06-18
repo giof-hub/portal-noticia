@@ -30,6 +30,7 @@ import { ContainerAuthComponent } from './features/auth/container/container-auth
 import { AnnounceComponent } from './features/announce/component/announce.component';
 import { ContainerAnnounceComponent } from './features/announce/container/container-announce.component';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { NodeMenuComponent } from './components/shared/node-menu/node-menu.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
     AuthComponent,
     ContainerAuthComponent,
     AnnounceComponent,
-    ContainerAnnounceComponent
+    ContainerAnnounceComponent,
+    NodeMenuComponent
   ],
   imports: [
     BrowserAnimationsModule,

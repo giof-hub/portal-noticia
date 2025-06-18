@@ -13,7 +13,7 @@ class AuthGuardService {
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (!this.auth.isAuthenticated()) {
-            this.router.navigate(['login']);
+            this.router.navigate(['login'], {queryParams: {redirect: state.url}});
             return false;
         }
         return true;

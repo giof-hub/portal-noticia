@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../../models/login.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,8 @@ export class AuthComponent {
 
   hide = signal(true);
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder) {
     this.form = this.fb.group({
       login: ['', Validators.required],
       password: ['', Validators.required]

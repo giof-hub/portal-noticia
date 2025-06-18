@@ -1,8 +1,14 @@
 <mat-toolbar>
     <mat-toolbar-row>
         <span class="template-navbar-spacer"></span>
-        <button mat-button class="category-btn" *ngFor="let category of $categories | async">{{ category.descricao }}</button>
-        <button mat-button class="category-btn">ANUNCIAR</button>
+        <!-- <button mat-button class="category-btn" *ngFor="let category of $categories | async">{{ category.descricao }}</button> -->
+
+        <app-node-menu *ngFor="let category of $categories | async"
+            [trigger]="category.description"
+            [data]="category"
+            [isRootNode]="true"></app-node-menu>
+
+        <a mat-button class="category-btn" routerLink="announce">ANUNCIAR</a>
         <span class="template-navbar-spacer"></span>
         <div>
             <div *ngIf="!isLogged">

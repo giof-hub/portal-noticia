@@ -4,7 +4,7 @@ import { loadLogin } from '../../../store/actions/portal.actions';
 import { Login } from '../../../models/login.model';
 import { selectLoginToken } from '../../../store/reducers/portal.reducer';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { startLoad } from '../../../store/actions/core.actions';
 
 @Component({
@@ -16,20 +16,33 @@ export class ContainerAuthComponent implements OnInit{
 
   private token$: Observable<string>;
 
+  private redirect: string;
+
   constructor(
     private store: Store,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     
     this.token$ = this.store.pipe(select(selectLoginToken));
 
+    this.route.queryParams.subscribe(params => {
+      this.redirect = params['redirect'];
+    });
+
+
     this.token$.subscribe((token) => {
       if (token) {
         localStorage.setItem('token', token);
 
-        this.router.navigate(['/news']);
+        if (this.redirect && this.redirect != '') {
+          this.router.navigate([this.redirect]);  
+        } else {
+          this.router.navigate(['news']);
+        }
+
       }
     });
 

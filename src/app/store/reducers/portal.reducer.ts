@@ -3,12 +3,13 @@ import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/
 import * as Actions from "../actions/portal.actions";
 import { Result } from "../../models/result.model";
 import { Category } from "../../models/category.model";
+import { Menu } from "../../models/menu.model";
 
 export const portalFeatureKey = 'portal';
 
 export interface State extends EntityState<any> {
 
-    categories: Category[],
+    categories: Menu[],
     token: string
 
 }

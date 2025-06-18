@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { selectCategories } from '../../store/reducers/portal.reducer';
 import { AuthService } from '../../core/service/auth.service';
 import { Router } from '@angular/router';
+import { Menu } from '../../models/menu.model';
 
 @Component({
   selector: 'app-template',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './template.component.scss'
 })
 export class TemplateComponent implements OnInit {
-  $categories: Observable<Category[]>;
+  $categories: Observable<Menu[]>;
 
   isLogged: boolean = false;
 
@@ -31,6 +32,7 @@ export class TemplateComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
 
-    location.reload();
+    this.router.navigate(['news']);
   }
 }
+''
